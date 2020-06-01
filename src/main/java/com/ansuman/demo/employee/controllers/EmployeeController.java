@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ansuman.demo.employee.entites.Employee;
+import com.ansuman.demo.employee.entites.User;
 import com.ansuman.demo.employee.repos.EmployeeRepository;
+import com.ansuman.demo.employee.repos.UserRepository;
 import com.jayway.jsonpath.internal.JsonContext;
 
 import net.minidev.json.JSONObject;
@@ -30,7 +32,7 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
-
+	
 	@PostMapping("/login/{fname}")
 	public String start(@PathVariable String fname) {
 		String output;
@@ -43,6 +45,8 @@ public class EmployeeController {
 	public String give() {
 		return "Sucess";
 	}
+	
+	
 	
 	
 	
