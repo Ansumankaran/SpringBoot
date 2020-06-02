@@ -1,6 +1,7 @@
 package com.ansuman.demo.employee.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ public class StudentController {
 		Student createdUser = studentRepository.save(request);
 		return "Sucess";
 	}
+	@CrossOrigin(origins = "http://localhost:8600")
 	@PostMapping("/login/{mobileNumber}")
 	public String verification(@PathVariable String mobileNumber) {
 		String output = "";
@@ -33,6 +35,7 @@ public class StudentController {
 		}
 		return output;
 	}
+	@CrossOrigin(origins = "http://localhost:8600")
 	@PostMapping("/valid")
 	public String validation(@RequestBody Student request) {
 		String output = "";
