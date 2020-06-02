@@ -33,6 +33,18 @@ public class StudentController {
 		}
 		return output;
 	}
+	@PostMapping("/valid")
+	public String validation(@RequestBody Student request) {
+		String output = "";
+		Student data = studentRepository.findByMobileNumber(request.getMobileNumber());
+		if(data != null) {
+			output = data.getPassword();
+		}else {
+			output = "Mobile Number is not Register";
+		}
+		return output;
+	}
+
 
 
 }
