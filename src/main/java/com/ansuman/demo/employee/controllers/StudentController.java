@@ -36,12 +36,13 @@ public class StudentController {
 		}else {
 			output = "Mobile Number is not Register";
 		}
-		return output;
+		
 		}catch(Exception e)
 		{
-			 output="error";
+			 output=e.getMessage();
 			return output;
 		}
+		return output;
 	}
 //	@CrossOrigin(origins = "http://localhost:8600")
 //	@PostMapping("/valid")
