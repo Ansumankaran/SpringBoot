@@ -6,5 +6,5 @@ import com.ansuman.demo.employee.entites.Student;
 
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
-	Student findByMobileNumber(String mobileNumber);
+	Student findByMobileNumberAndPassword(String mobileNumber,String password);
 }
