@@ -27,6 +27,8 @@ public class StudentController {
 	@PostMapping("/login/{mobileNumber}/{password}")
 	public String verification(@PathVariable String mobileNumber,@PathVariable String password) {
 		String output = "";
+		try {
+		
 		System.out.println(mobileNumber+" pass "+password);
 		Student data = studentRepository.findByMobileNumberAndPassword(mobileNumber, password);
 		if(data != null) {
@@ -35,6 +37,11 @@ public class StudentController {
 			output = "Mobile Number is not Register";
 		}
 		return output;
+		}catch(Exception e)
+		{
+			 output="error";
+			return output;
+		}
 	}
 //	@CrossOrigin(origins = "http://localhost:8600")
 //	@PostMapping("/valid")
