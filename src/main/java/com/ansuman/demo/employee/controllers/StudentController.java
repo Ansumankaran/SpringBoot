@@ -82,9 +82,24 @@ public class StudentController {
 		}
 		return output;
 	}
-	@DeleteMapping("/delete")
-	public void deleteUser(@RequestBody Student request) {
-		studentRepository.delete(request);
+	@DeleteMapping("/delete/{mobileNumber}")
+	public String deleteUser(@PathVariable String mobileNumber) {
+		String output = "";
+		try {
+		Student data = studentRepository.findByMobileNumber(mobileNumber);
+		if(data != null) {
+			studentRepository.deleteById(data.getId());
+			output = "deleted";
+		}else {
+			output = "not deleted";
+		}
+		
+		}catch(Exception e)
+		{
+			 output=e.getMessage();
+			return output;
+		}
+		return output;
 	}
 
 
