@@ -44,18 +44,43 @@ public class StudentController {
 		}
 		return output;
 	}
-//	@CrossOrigin(origins = "http://localhost:8600")
-//	@PostMapping("/valid")
-//	public String validation(@RequestBody Student request) {
-//		String output = "";
-//		Student data = studentRepository.findByMobileNumber(request.getMobileNumber());
-//		if(data != null) {
-//			output = data.getPassword();
-//		}else {
-//			output = "Mobile Number is not Register";
-//		}
-//		return output;
-//	}
+	@CrossOrigin(origins = "http://localhost:8600")
+	@PostMapping("/login/{mobileNumber}")
+	public String verification1(@PathVariable String mobileNumber) {
+		String output = "";
+		try {
+		Student data = studentRepository.findByMobileNumber(mobileNumber);
+		if(data != null) {
+			output = data.getPassword();
+		}else {
+			output = "Mobile Number is not Register";
+		}
+		
+		}catch(Exception e)
+		{
+			 output=e.getMessage();
+			return output;
+		}
+		return output;
+	}
+	@CrossOrigin(origins = "http://localhost:8600")
+	@PostMapping("/valid")
+	public String validation(@RequestBody Student request) {
+		String output = "";
+		try {
+		Student data = studentRepository.findByMobileNumber(request.getMobileNumber());
+		if(data != null) {
+			output = data.getPassword();
+		}else {
+			output = "Mobile Number is not Register";
+		}
+		
+		}catch(Exception e) {
+			output = e.getMessage();
+			return output;
+		}
+		return output;
+	}
 
 
 
