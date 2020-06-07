@@ -12,5 +12,6 @@ public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 	
 	
 	Employee findByFirstName(@Param("firstName") String name);
+			
 
 }
